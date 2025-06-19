@@ -2,15 +2,15 @@
 
 docker pull koenkk/zigbee2mqtt;
 
-docker run -d --restart=unless-stopped   --net=host --name=z2m8123 -it -v /etc/localtime:/etc/localtime:ro -v /opt/hassio/z2m8123:/app/data --device=/dev/ttyUSB0 -p 8099:8099 koenkk/zigbee2mqtt;
+docker run -d --restart=unless-stopped   --net=host --name=z2m -it -v /etc/localtime:/etc/localtime:ro -v /home/hassio/z2m:/app/data --device=/dev/ttyUSB0 -p 8099:8099 koenkk/zigbee2mqtt;
 
 sleep 2
 
-docker stop z2m8123;
+docker stop z2m;
 
-mv /opt/hassio/z2m8123/configuration.yaml /opt/hassio/z2m8123/configuration.yaml.bak;
+mv /home/hassio/z2m/configuration.yaml /opt/hassio/z2m8123/configuration.yaml.bak;
 
-cat >> /opt/hassio/z2m8123/configuration.yaml <<'EOF'
+cat >> /home/hassio/z2m/configuration.yaml <<'EOF'
 # Home Assistant integration (MQTT discovery)
 homeassistant: true
 
@@ -22,7 +22,7 @@ permit_join: false
 # MQTT settings
 mqtt:
   # MQTT base topic for zigbee2mqtt MQTT messages
-  base_topic: z2m8123
+  base_topic: z2m
   # MQTT server URL
   server: 'mqtt://localhost:1883'
   # MQTT server authentication, uncomment if required:
@@ -44,7 +44,7 @@ advanced:
   last_seen: 'ISO_8601_local'
   homeassistant_discovery_topic: 'hass-zigbee'
   # Optional: Home Assistant status topic (default: shown below)
-  homeassistant_status_topic: 'slznok021/status'
+  homeassistant_status_topic: 'csxm/status'
 
 frontend:
   port: 8099
