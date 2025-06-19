@@ -38,8 +38,8 @@ touch ui-lovelace.yaml;
 mkdir packages;
 mkdir www;
 #vi configuration.yaml
-wget https://raw.githubusercontent.com/slznxyz/lyq-ha-install/main/start_yunyinle.sh
-wget https://github.com/slznxyz/lyq-ha-install/raw/main/haslayer/dio.zip;
+wget https://raw.githubusercontent.com/lai95588/dk-install/main/start_yunyinle.sh
+wget https://github.com/lai95588/dk-install/raw/main/haslayer/dio.zip;
 unzip -d /config/custom_components/slrelay dio.zip;
 rm -rf dio.zip;
 exit
