@@ -18,7 +18,7 @@ rest:
   - scan_interval: 3600
     resource_template: http://tool.bitefu.net/jiari/?d={{ now().strftime('%Y%m%d') }}
     sensor:   
-      - name: cn_workdays
+      - name: 今天是工作日吗
         value_template: >-
           {% if value == '0' %}
             工作日
