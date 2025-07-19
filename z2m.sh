@@ -2,7 +2,7 @@
 
 docker pull koenkk/zigbee2mqtt;
 
-docker run -d --restart=unless-stopped   --net=host --name=z2m -it -v /etc/localtime:/etc/localtime:ro -v /home/hassio/z2m:/app/data --device=/dev/z-cc2652p -p 8099:8099 koenkk/zigbee2mqtt;
+docker run -d -p 8099:8099 --restart=always --name=z2m --network host -it -v /etc/localtime:/etc/localtime:ro -v /home/hassio/z2m:/app/data --device=/dev/z-cc2652p koenkk/zigbee2mqtt;
 
 sleep 2
 
