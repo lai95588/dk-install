@@ -8,7 +8,7 @@ sleep 2
 
 docker stop z2m;
 
-mv /home/hassio/z2m/configuration.yaml /opt/hassio/z2m/configuration.yaml.bak;
+mv /home/hassio/z2m/configuration.yaml /home/hassio/z2m/configuration.yaml.bak;
 
 cat >> /home/hassio/z2m/configuration.yaml <<'EOF'
 # Home Assistant integration (MQTT discovery)
