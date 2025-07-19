@@ -14,41 +14,50 @@ cat >> /home/hassio/z2m/configuration.yaml <<'EOF'
 # Home Assistant integration (MQTT discovery)
 homeassistant:
   enabled: true
-  discovery_topic: hass-zigbee
-  status_topic: csxm/status
-
-
-# allow new devices to join
+  discovery_topic: hass-zigbee   #发现前端
+  status_topic: csxm/status     #出生消息
 permit_join: false
-
-
-# MQTT settings
 mqtt:
-  # MQTT base topic for zigbee2mqtt MQTT messages
   base_topic: z2m
-  # MQTT server URL
-  server: 'mqtt://localhost:1883'
-  # MQTT server authentication, uncomment if required:
+  server: mqtt://localhost:1883
   user: pi
   password: raspberry
-
-
-# Serial settings
 serial:
-  # Location of USB sniffer
   port: /dev/z-cc2652p
+  adapter: zstack       #强制启动适配器
 advanced:
   log_level: error
-  channel: 25
-  pan_id: 0x1a68
-## 6759
-  ext_pan_id: [0xD4, 0x4D, 0xF4, 0xE5, 0xD2, 0xD8, 0xC4, 0x8B]  
-  network_key: [2, 3, 8, 7, 5, 12, 12, 13, 0, 2, 4, 6, 8, 10, 12, 13]
-  last_seen: 'ISO_8601_local'
-  homeassistant_discovery_topic: 'hass-zigbee'
-  # Optional: Home Assistant status topic (default: shown below)
-  homeassistant_status_topic: 'csxm/status'
-
+  channel: 11
+  pan_id: 6760
+  ext_pan_id:
+    - 243
+    - 61
+    - 196
+    - 228
+    - 210
+    - 200
+    - 195
+    - 139
+  network_key:
+    - 1
+    - 8
+    - 8
+    - 7
+    - 8
+    - 11
+    - 13
+    - 15
+    - 0
+    - 2
+    - 4
+    - 6
+    - 8
+    - 10
+    - 12
+    - 13
+  homeassistant_legacy_entity_attributes: false
+  legacy_api: false
+  legacy_availability_payload: false
 frontend:
   port: 8099
 EOF
