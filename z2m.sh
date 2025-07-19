@@ -36,7 +36,7 @@ mqtt:
 # Serial settings
 serial:
   # Location of USB sniffer
-  port: /dev/ttyUSB0
+  port: /dev/z-cc2652p
 advanced:
   log_level: error
   channel: 25
