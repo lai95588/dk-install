@@ -2,7 +2,7 @@
 
 docker pull koenkk/zigbee2mqtt;
 
-docker run -d --restart=unless-stopped   --net=host --name=z2m -it -v /etc/localtime:/etc/localtime:ro -v /home/hassio/z2m:/app/data --device=/dev/ttyUSB0 -p 8099:8099 koenkk/zigbee2mqtt;
+docker run -d --restart=unless-stopped   --net=host --name=z2m -it -v /etc/localtime:/etc/localtime:ro -v /home/hassio/z2m:/app/data --device=/dev/z-cc2652p -p 8099:8099 koenkk/zigbee2mqtt;
 
 sleep 2
 
@@ -12,7 +12,10 @@ mv /home/hassio/z2m/configuration.yaml /opt/hassio/z2m/configuration.yaml.bak;
 
 cat >> /home/hassio/z2m/configuration.yaml <<'EOF'
 # Home Assistant integration (MQTT discovery)
-homeassistant: true
+homeassistant:
+  enabled: true
+  discovery_topic: hass-zigbee
+  status_topic: csxm/status
 
 
 # allow new devices to join
